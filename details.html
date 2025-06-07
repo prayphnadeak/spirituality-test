@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hasil Asesmen Spiritualitas</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <h1 class="neon-text">Jalan Spiritual Anda</h1>
+
+    <div class="question-box active">
+        <div id="highestPath" class="path-name" style="color: white; font-size: 20px;">-</div>
+        <div class="description" id="description" style="color: #e0e0e0;"></div>
+    </div>
+
+    <a href="index.html" class="btn-back">Kembali ke Beranda</a>
+
+    <script>
+        window.onload = function () {
+            const storedScores = localStorage.getItem("spiritualScores");
+            if (!storedScores) {
+                document.getElementById("highestPath").textContent = "Data tidak tersedia";
+                document.getElementById("description").innerHTML = "<em>Silakan isi kuesioner terlebih dahulu.</em>";
+                return;
+            }
+
+            const scores = JSON.parse(storedScores);
+
+            let highestScore = -1;
+            let bestPath = "";
+
+            for (const path in scores) {
+                console.log(`Path: ${path}, Score: ${scores[path]}`);
+                if (scores[path] > highestScore) {
+                    highestScore = scores[path];
+                    bestPath = path;
+                }
+            }
+
+            console.log("Best Path:", bestPath);
+
+            const descriptions = {
+                RITUAL: "Jalan spiritual ini menekankan pentingnya upacara ibadah yang kaya akan simbol, seperti bangunan gereja yang megah, dupa, pakaian khusus, patung, dan lagu-lagu rohani. Lewat misa dan berbagai ritual lainnya, umat diajak untuk merasakan kehadiran Tuhan secara lebih dekat, bukan cuma lewat pikiran, tapi juga lewat hati dan indra. Ibadah di sini bukan sekadar kebiasaan atau formalitas, melainkan momen penuh makna yang menyentuh jiwa, membantu orang merasa terhubung dengan sesuatu yang lebih besar, dan memberi kekuatan rohani untuk menjalani hidup dengan arah dan kedalaman.",
+                INTELEKTUAL: "Jalan spiritual ini cocok buat orang yang suka mikir dan bertanya. Mereka mendekatkan diri pada Tuhan lewat logika, refleksi, dan pemahaman yang mendalam. Bukan cuma ikut-ikutan, tapi benar-benar ingin tahu kenapa percaya, apa makna hidup, dan gimana cara Tuhan bekerja. Praktiknya bisa lewat pendalaman Alkitab, diskusi tentang iman, atau baca buku-buku filsafat agama. Tujuannya bukan supaya kelihatan pintar, tapi supaya pikiran dan hati selaras dengan kehendak Tuhan, dan iman jadi lebih kokoh karena paham, bukan sekadar ikut tradisi.",
+                SOSIAL: "Jalan spiritual ini mengajak orang untuk menunjukkan imannya lewat tindakan nyata, seperti memperjuangkan keadilan, membantu yang membutuhkan, dan berbuat baik kepada sesama. Bagi mereka yang menempuh jalan ini, iman bukan cuma soal doa atau ibadah, tapi juga soal bagaimana kita memperlakukan orang lain setiap hari. Tokoh-tokoh seperti Martin Luther King Jr. dan Ibu Teresa jadi inspirasi karena mereka membuktikan kasih Tuhan lewat aksi. Tindakan baik bukan untuk membeli keselamatan, tapi sebagai bukti bahwa iman itu hidup dan nyata dalam keseharian.",
+                DEVOSI: "Jalan spiritual ini menonjolkan kedekatan emosional dan relasi yang akrab dengan Tuhan, seperti curhat ke sahabat dekat atau merasakan pelukan kasih seorang Bapa. Fokus utamanya bukan pada keheningan mendalam seperti dalam kontemplasi, tapi pada ekspresi kasih yang hangat dan terbuka—melalui doa pribadi yang spontan, pujian yang menyentuh hati, atau momen harian bersama Tuhan. Devosi ini hidup dalam keseharian yang dinamis, di mana seseorang merasa Tuhan begitu dekat dan nyata, bukan lewat jarak sunyi, tapi lewat komunikasi yang penuh kasih, rasa syukur, dan kerinduan tulus untuk menyenangkan hati-Nya dalam segala hal.",
+                KONTEMPLASI: "Jalan spiritual ini fokus pada hubungan pribadi dan penuh kasih dengan Tuhan, di mana iman dirasakan lewat kedekatan emosional dan batiniah, bukan cuma lewat aturan atau ritual. Orang-orang yang menempuh jalan ini biasanya mencari momen tenang untuk ngobrol dengan Tuhan lewat doa pribadi, saat teduh, atau mendengarkan lagu rohani yang menyentuh hati. Tujuannya adalah untuk makin dekat dan akrab dengan Tuhan, seperti sahabat yang bisa dipercaya dan dicurhati. Bagi mereka, pertumbuhan iman itu soal keintiman, bukan hanya pengetahuan.",
+                MISTIK: "Jalan spiritual ini fokus pada keheningan dan pengalaman pribadi yang dalam bersama Tuhan, tapi juga sering terbuka pada dimensi rohani yang lebih dalam dan misterius seperti yang dikenal dalam tradisi shamanik. Bagi sebagian orang, pengalaman akan Tuhan tidak hanya hadir dalam doa dan meditasi, tapi juga lewat lawatan roh, penglihatan, pertempuran rohani, atau kesadaran akan realitas spiritual yang tidak kasat mata. Dalam keheningan, mereka menjadi peka terhadap dinamika roh—baik yang ilahi maupun yang gelap—dan merasa dipanggil untuk terlibat dalam perang roh, sebagai bentuk tanggapan terhadap panggilan Tuhan dalam menjaga kekudusan dan membawa terang ke dalam kegelapan. Bagi mereka, dunia roh bukan hal mistis yang asing, tapi bagian nyata dari perjalanan iman yang melibatkan seluruh keberadaan, dari pikiran terdalam hingga realitas spiritual di sekitar."
+            };
+
+            const upperBestPath = bestPath.toUpperCase();
+
+            document.getElementById("highestPath").textContent = upperBestPath;
+
+            if (descriptions[upperBestPath]) {
+                document.getElementById("description").innerHTML = `<em>${descriptions[upperBestPath]}</em>`;
+            } else {
+                document.getElementById("description").innerHTML = "<em>Deskripsi tidak tersedia untuk jalur ini.</em>";
+            }
+        };
+
+        function questionsInPath(pathName) {
+            const paths = {
+                RITUAL: [0, 1],
+                INTELEKTUAL: [2, 3],
+                SOSIAL: [4, 5],
+                DEVOSI: [6, 7],
+                MISTIK: [8, 9],
+                KONTEMPLASI: [10, 11]
+            };
+            return paths[pathName]?.length || 0;
+        }
+    </script>
+
+</body>
+
+</html>

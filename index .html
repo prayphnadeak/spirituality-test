@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Penilaian Jalan Spiritual</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="neon-text">Asesmen Jalan Spiritual</h1>
+
+    <!-- Box Penjelasan -->
+    <div class="question-box active">
+      <p>Website ini merupakan hasil kerjasama antara <strong>Mulia Novanto Manurung</strong> (Alumni Filsafat Faktultas
+        Teologia UKDW
+        Yogyakarta) dan <strong>Pray Putra Hasianro Nadeak</strong> (Mahasiswa Magister Transformasi Layanan Digital
+        ITB) untuk menjawab
+        kebutuhan Anda yang ingin mengetahui bahwa Anda dapat merasakan dan mengalami kedekatan dengan Tuhan dengan
+        jalan
+        spiritual seperti apa. Jalan spiritual yang akan dijadikan acuan adalah Jalan Spiritual Menurut Dale Cannon.
+        Dalam
+        skripsinya, Mulia menjelaskan bahwa Dale Cannon membagi jalan spiritual menjadi 6 jalan, yaitu jalan ritual,
+        jalan
+        kontemplasi, jalan mistik, jalan intelektual, jalan sosial dan jalan devosi. Keenam jalan spiritual tersebut
+        dapat
+        diidentifikasi dengan menjawab pertanyaan demi pertanyaan yang ada website ini sehingga nanti diperoleh hasil
+        manakah
+        jalan spiritual apa yang dominan dalam hidup Anda.</p>
+
+      <!-- Tombol Lanjut -->
+      <button id="nextBtn" class="show" type="button" onclick="validateAndGo()">Lanjut ke Asesmen</button>
+
+      <script>
+        function validateAndGo() {
+          // Tambahkan logika validasi jika diperlukan
+          const isConfirmed = confirm("Apakah Anda yakin ingin melanjutkan?");
+          if (isConfirmed) {
+            window.location.href = "form.html";
+          }
+        }
+      </script>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asesmen Jalan Spiritual</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="neon-text">Asesmen Jalan Spiritual</h1>
+
+    <!-- Form Kuesioner -->
+    <form id="questionnaireForm">
+    </form>
+
+    <!-- Tambahkan di dalam form -->
+    <div id="submitSection" style="text-align:center; margin-top:20px;">
+      <button type="submit" id="submitBtn">Lihat Hasil</button>
+    </div>
+
+    <!-- Pagination -->
+    <div id="pagination" class="pagination"></div>
+
+
+
+    <!-- Navigasi -->
+    <div class="navigation-buttons">
+      <button id="prevBtn" onclick="prevQuestion()">‹ Sebelumnya</button>
+      <button id="nextBtn" onclick="nextQuestion()">Selanjutnya ›</button>
+    </div>
+
+    <!-- Tambahkan di dalam form -->
+    <div id="submitSection" style="text-align:center; margin-top:20px;">
+      <button type="submit" id="submitBtn" disabled>Lihat Hasil</button>
+    </div>
+
+    <!-- Hasil Penilaian -->
+    <div id="resultPage" style="display: none;">
+      <h2>Hasil Penilaian</h2>
+      <p>Ranking Jalan Spiritual:</p>
+      <ul id="rankingList"></ul>
+      <button id="viewDetailsBtn">Lihat Detail Jalan Spiritual Ranking 1</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

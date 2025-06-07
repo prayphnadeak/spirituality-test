@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hasil Asesmen Jalan Spiritual</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #001f3f;
+      background-image: url("background.PNG");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: rgb(255, 255, 255);
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    #detailContent {
+      background: #003366;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #00bfff;
+      margin-top: 20px;
+    }
+
+    canvas {
+      max-width: 100%;
+    }
+
+    button {
+      margin-top: 30px;
+      font-size: 16px;
+      background: #00bfff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      padding: 10px 20px;
+    }
+
+    button:hover {
+      background: #0099cc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="neon-text">Hasil Asesmen Anda</h1>
+    <div id="detailContent">
+      <canvas id="spiritualChart" width="400" height="400"></canvas>
+    </div>
+    <button onclick="window.location.href='index.html'">Kembali ke Beranda</button>
+    <button id="viewExplanationBtn">Lihat Penjelasan</button>
+  </div>
+
+  <script>
+    const spiritualScores = JSON.parse(localStorage.getItem("spiritualScores")) || {
+      Ritual: 60,
+      Intelektual: 70,
+      Sosial: 85,
+      Devosi: 50,
+      Mistik: 40,
+      Kontemplasi: 75
+    };
+
+    const labels = ["Ritual", "Intelektual", "Sosial", "Devosi", "Mistik", "Kontemplasi"];
+    const data = labels.map(label => spiritualScores[label] || 0);
+
+    const ctx = document.getElementById('spiritualChart').getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Skor Jalan Spiritual',
+          data: data,
+          fill: true,
+          backgroundColor: 'rgba(0, 191, 255, 0.2)',
+          borderColor: '#00bfff',
+          pointBackgroundColor: '#00bfff',
+          pointBorderColor: '#fff',
+          pointHoverBackgroundColor: '#fff',
+          pointHoverBorderColor: '#00bfff'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            labels: {
+              color: 'white'
+            }
+          }
+        },
+        scales: {
+          r: {
+            angleLines: {
+              color: 'white'
+            },
+            grid: {
+              color: 'white'
+            },
+            pointLabels: {
+              color: 'white',
+              font: function(context) {
+                const width = context.chart.width;
+                if (width < 400) return { size: 16, weight: 'bold' };
+                if (width < 600) return { size: 24, weight: 'bold' };
+                return { size: 16, weight: 'bold' };
+              }
+            },
+            ticks: {
+              color: 'white',
+              backdropColor: 'transparent'
+            },
+            suggestedMin: 0,
+            suggestedMax: 100
+          }
+        }
+      }
+    });
+  </script>
+  <script>
+  // Tambahkan event listener untuk tombol Lihat Penjelasan
+  document.getElementById("viewExplanationBtn").addEventListener("click", function () {
+    window.location.href = "details.html";
+  });
+</script>
+</body>
+</html>
