@@ -23,16 +23,16 @@ function loadQuestions() {
     },
     questions: [
       { text: "Hal Yang Terpenting Dari Sebuah Agama Itu Adalah Kegiatan Peribadahannya", path: "Ritual" },
-      { text: "Simbol-Simbol Dalam Beribadah Berfungsi Untuk Menolong Saya Merasakan Hadirat Tuhan Allah", path: "Ritual" },
-      { text: "Hal yang terpenting dalam beragama adalah dapat memahami Alkitab secara kritis dan analitis", path: "Intelektual" },
+      { text: "Simbol-Simbol Dalam Beribadah Berfungsi Untuk Menolong Saya Merasakan Hadirat Tuhan Yang Maha Esa", path: "Ritual" },
+      { text: "Hal yang terpenting dalam beragama adalah dapat memahami Kitab Suci secara kritis dan analitis", path: "Intelektual" },
       { text: "Saya dapat menjelaskan secara logis atas perubahan spiritual yang saya rasakan", path: "Intelektual" },
       { text: "Jika terjadi penindasan atau ketidakadilan terhadap  suatu kelompok masyarakat, sebagai orang yang religius maka saya perlu menegakkan keadilan dan melakukan perubahan pada masyarakat", path: "Sosial" },
-      { text: "Memberikan bantuan dan aksi sosial, merupakan sebuah cara saya merasakan berkat dan hadirat Tuhan", path: "Sosial" },
+      { text: "Memberikan bantuan dan aksi sosial, merupakan sebuah cara saya merasakan berkat dan hadirat Tuhan Yang Maha Esa", path: "Sosial" },
       { text: "Saat saya melakukan saat teduh secara pribadi, saya merasa bahwa diri saya sedang berhubungan langsung dengan Tuhan", path: "Devosi" },
-      { text: "Saya lebih suka membuka relasi kepada Tuhan / Yang Maha Mulia secara personal", path: "Devosi" },
+      { text: "Saya lebih suka membuka relasi kepada Tuhan Yang Maha Esa secara personal", path: "Devosi" },
       { text: "Saya percaya bahwasanya dalam dunia ini, terdapat kekuatan roh yang memiliki jenis yang berbeda-beda dan fungsi berbeda dalam membantu menyelesaikan masalah saya.", path: "Mistik" },
       { text: "Menurut saya seni pengobatan tradisional leluhur, perlu dilestarikan.", path: "Mistik" },
-      { text: "Saya merasa dalam usaha menghayati iman saya kepada Tuhan, saya harus menjauhkan diri saya dari urusan keduniaan terlebih dahulu.", path: "Kontemplasi" },
+      { text: "Saya merasa dalam usaha menghayati iman saya kepada Tuhan Yang Maha Esa, saya harus menjauhkan diri saya dari urusan keduniaan terlebih dahulu.", path: "Kontemplasi" },
       { text: "Pertobatan rohani adalah suatu hal penting yang harus saya lakukan terus menerus.", path: "Kontemplasi" }
     ]
   };
